@@ -39,7 +39,11 @@
 #cmakedefine LWS_HAVE_EC_POINT_get_affine_coordinates
 #cmakedefine LWS_HAVE_EC_KEY_new_by_curve_name
 #cmakedefine LWS_HAVE_ECDSA_SIG_set0
-#cmakedefine LWS_HAVE_EVP_MD_CTX_free
+#ifdef _WIN32
+	#define LWS_HAVE_EVP_MD_CTX_free
+#else
+	#cmakedefine LWS_HAVE_EVP_MD_CTX_free
+#endif
 #cmakedefine LWS_HAVE_EVP_aes_128_wrap
 #cmakedefine LWS_HAVE_EVP_aes_128_cfb8
 #cmakedefine LWS_HAVE_EVP_aes_128_cfb128
@@ -61,7 +65,11 @@
 #cmakedefine LWS_HAVE_GETPWUID_R
 #cmakedefine LWS_HAVE_GETPWNAM_R
 #cmakedefine LWS_HAVE_LIBCAP
-#cmakedefine LWS_HAVE_HMAC_CTX_new
+#ifdef _WIN32
+	#define LWS_HAVE_HMAC_CTX_new
+#else
+	#cmakedefine LWS_HAVE_HMAC_CTX_new
+#endif
 #cmakedefine LWS_HAVE_MALLOC_H
 #cmakedefine LWS_HAVE_MALLOC_TRIM
 #cmakedefine LWS_HAVE_MALLOC_USABLE_SIZE

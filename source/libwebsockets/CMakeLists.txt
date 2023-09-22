@@ -22,7 +22,7 @@
 # IN THE SOFTWARE.
 #
 
-cmake_minimum_required(VERSION 2.8.12)
+cmake_minimum_required(VERSION 2.8.12...3.15.0)
 include(CheckFunctionExists)
 include(CheckSymbolExists)
 include(CheckIncludeFile)
@@ -277,7 +277,7 @@ option(LWS_WITH_COSE "COSE CBOR Signature / Encryption / Keys (RFC8152) API" OFF
 option(LWS_WITH_GENCRYPTO "Enable support for Generic Crypto apis independent of TLS backend" OFF)
 option(LWS_WITH_SELFTESTS "Selftests run at context creation" OFF)
 option(LWS_WITH_GCOV "Build with gcc gcov coverage instrumentation" OFF)
-option(LWS_WITH_EXPORT_LWSTARGETS "Export libwebsockets CMake targets.  Disable if they conflict with an outer cmake project." ON)
+option(LWS_WITH_EXPORT_LWSTARGETS "Export libwebsockets CMake targets.  Disable if they conflict with an outer cmake project." OFF)
 option(LWS_REPRODUCIBLE "Build libwebsockets reproducible. It removes the build user and hostname from the build" ON)
 option(LWS_WITH_MINIMAL_EXAMPLES "Also build the normally standalone minimal examples, for QA" OFF)
 option(LWS_WITH_LWSAC "lwsac Chunk Allocation api" ON)
@@ -319,6 +319,14 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "SunOS")
        set(LWS_SUPPRESS_DEPRECATED_API_WARNINGS 1)
 endif()
 
+option(LIBWEBSOCKETS_WITH_DISABLED_TEST_APPS "Build libwebsockets with disabled test apps." OFF)
+if(LIBWEBSOCKETS_WITH_DISABLED_TEST_APPS)
+	set(LWS_WITHOUT_TESTAPPS ON)
+	set(LWS_WITHOUT_TEST_SERVER ON)
+	set(LWS_WITHOUT_TEST_SERVER_EXTPOLL ON)
+	set(LWS_WITHOUT_TEST_PING ON)
+	set(LWS_WITHOUT_TEST_CLIENT ON)
+endif()
 
 #
 # to use miniz, enable both LWS_WITH_ZLIB and LWS_WITH_MINIZ
