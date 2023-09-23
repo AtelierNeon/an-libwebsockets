@@ -1,0 +1,11 @@
+{
+    "cmake.buildDirectory": "${workspaceFolder}/build/vscode",
+    "cmake.sourceDirectory": "${workspaceFolder}",
+    "cmake.configureSettings": {
+        "LIBWEBSOCKETS_WITH_DISABLED_TEST_APPS": "OFF",
+        "OPENSSL_WITH_DEPRECATED_CIPHERS": "ON",
+        "OPENSSL_WITH_DISABLED_APPS": "ON",
+        "OPENSSL_WITH_ZLIB": "ON",
+        "ZLIB_WITH_DISABLED_TEST_APPS": "ON"
+    }
+}
